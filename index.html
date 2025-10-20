@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decodificador JS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #0066cc;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 320px;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            background-color: #0066cc;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #004c99;
+        }
+
+        .resultado {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Decodificador</h1>
+        <input type="text" id="texto" placeholder="Escribe el texto aquí">
+        <div>
+            <button onclick="mostrarDecode1()">Decodificar 1</button>
+            <button onclick="mostrarDecode2()">Decodificar 2</button>
+        </div>
+        <div class="resultado" id="resultado">Resultado: </div>
+    </div>
+
+    <script>
+        // Primera decodificación
+        function decode1(texto){
+            let pares = '';
+            let impares = '';
+            
+            for (let i = 0; i < texto.length; i++) {
+                if (i % 2 === 0) {
+                    pares += texto[i];    // Posiciones pares
+                } else {
+                    impares += texto[i];  // Posiciones impares
+                }
+            }
+            return pares + impares;
+        }
+
+        // Segunda decodificación
+        function decode2(texto) {
+            return texto.split('').reverse().join('');
+        }
+
+        // Mostrar resultados en pantalla
+        function mostrarDecode1() {
+            const texto = document.getElementById('texto').value;
+            const resultado = decode1(texto);
+            document.getElementById('resultado').textContent = "Resultado: " + resultado;
+        }
+
+        function mostrarDecode2() {
+            const texto = document.getElementById('texto').value;
+            const resultado = decode2(texto);
+            document.getElementById('resultado').textContent = "Resultado: " + resultado;
+        }
+    </script>
+</body>
+</html>
